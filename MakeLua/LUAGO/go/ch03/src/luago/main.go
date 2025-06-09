@@ -5,9 +5,9 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/zxh0/lua.go/binchunk"
+	"luago/binchunk"
 
-	. "lua.go/vm" // Importing the vm package to use Instruction type and its methods
+	. "luago/vm" // Importing the vm package to use Instruction type and its methods
 )
 
 func main() {
@@ -140,6 +140,6 @@ func printOperands(i Instruction) {
 		fmt.Printf("%d %d", a, sbx)
 	case IAx:
 		ax := i.Ax()
-		fmt.Printf("%d", -l-ax)
+		fmt.Printf("%d", -1-ax)
 	}
 }

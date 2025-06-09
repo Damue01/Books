@@ -58,7 +58,7 @@ const (
 	LUAC_FORMAT      = 0
 	LUAC_DATA        = "\x19\x93\r\n\x1a\n"
 	CINT_SIZE        = 4
-	CSZIET_SIZE      = 8
+	CSIZE_T_SIZE     = 8
 	INSTRUCTION_SIZE = 4
 	LUA_INTEGER_SIZE = 8
 	LUA_NUMBER_SIZE  = 8

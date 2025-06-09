@@ -62,7 +62,7 @@ func (self *reader) checkHeader() {
 		panic("corrupted!")
 	} else if self.readByte() != CINT_SIZE {
 		panic("int size mismatch!")
-	} else if self.readByte() != CSZIET_SIZE {
+	} else if self.readByte() != CSIZE_T_SIZE {
 		panic("size_t size mismatch!")
 	} else if self.readByte() != INSTRUCTION_SIZE {
 		panic("instruction size mismatch!")
