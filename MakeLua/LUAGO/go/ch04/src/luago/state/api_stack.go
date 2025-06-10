@@ -20,12 +20,12 @@ func (self *luaState) CheckStack(n int) bool {
 // }
 
 func (self *luaState) Pop(n int) {
-	self.SetTop(-n-1)
+	self.SetTop(-n - 1)
 }
 
 func (self *luaState) Copy(fromIdx, toIdx int) {
 	val := self.stack.get(fromIdx)
-	self.stack.check(toIdx, val)
+	self.stack.set(toIdx, val)
 }
 
 func (self *luaState) PushValue(idx int) {
@@ -73,8 +73,7 @@ func (self *luaState) SetTop(idx int) {
 		for i := 0; i < n; i++ {
 			self.stack.pop()
 		}
-	} 
-	else if n < 0 {
+	} else if n < 0 {
 		for i := 0; i > n; i-- {
 			self.stack.push(nil)
 		}

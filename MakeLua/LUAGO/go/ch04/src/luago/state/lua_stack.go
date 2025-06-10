@@ -45,6 +45,11 @@ func (self *luaStack) absIndex(idx int) int {
 	return idx + self.top + 1
 }
 
+func (self *luaStack) isValid(idx int) bool {
+	absIdx := self.absIndex(idx)
+	return absIdx > 0 && absIdx <= self.top
+}
+
 func (self *luaStack) get(idx int) luaValue {
 	absIdx := self.absIndex(idx)
 	if absIdx > 0 && absIdx <= self.top {
@@ -60,4 +65,13 @@ func (self *luaStack) set(idx int, val luaValue) {
 		return
 	}
 	panic("invalid index: " + string(idx))
+}
+
+func (self *luaStack) reverse(from, to int) {
+	slots := self.slots
+	for from < to {
+		slots[from], slots[to] = slots[to], slots[from]
+		from++
+		to--
+	}
 }
