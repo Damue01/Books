@@ -67,3 +67,28 @@ func (self *luaState) Arith(op ArithOp) {
 		panic("arithmetic error: " + self.TypeName(self.Type(-2)) + " " + self.TypeName(self.Type(-1)))
 	}
 }
+
+func _arith(a, b luaValue, op operator) luaValue {
+	if op.floatFunc == nil { // bitwise
+		if x, ok := convertToInteger(a); ok {
+			if y, ok := convertToInteger(a); ok {
+				return op.integerFunc(x, y)
+			}
+		}
+	} else { // arith
+		if op.integerFunc != nil {
+			if x, ok := a.(int64); ok {
+				if y, ok := b.(int64); ok {
+					return op.integerFunc(x, y)
+				}
+			}
+		}
+		if x, ok := convertToFloat(a); ok {
+			if y, ok := convertToFloat(b); ok {
+				return op.floatFunc(x, y)
+			}
+		}
+	}
+	return nil
+}
+

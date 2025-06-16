@@ -3,6 +3,7 @@ package state
 import (
 	"fmt"
 	. "luago/api"
+	"luago/number"
 )
 
 type luaValue interface{}
