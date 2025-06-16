@@ -1,8 +1,8 @@
 package api
 
 type LuaType int
-type ArithOp int    // 算术操作符
-type CompareOp int  // 比较操作符
+type ArithOp int   // 算术操作符
+type CompareOp int // 比较操作符
 
 type LuaState interface {
 	/* basic stack operations */
@@ -41,8 +41,8 @@ type LuaState interface {
 	PushNumber(n float64) // 压入浮点数值
 	PushString(s string)  // 压入字符串值
 	/* comparison and arithmetic functions */
-	Arith(op ArithOp) // 执行算术操作
+	Arith(op ArithOp)                          // 执行算术操作
 	Compare(idx1, idx2 int, op CompareOp) bool // 比较两个值
-	Len(idx int) // 返回idx位置的值的长度
-	Concat(n int) // 将n个字符串连接起来
+	Len(idx int)                               // 返回idx位置的值的长度
+	Concat(n int)                              // 将n个字符串连接起来
 }
